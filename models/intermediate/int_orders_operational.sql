@@ -2,6 +2,10 @@ SELECT
   m.orders_id
   ,m.date_date
   ,m.margin
+  ,m.purchase_cost
+  ,m.revenue
+  ,m.quantity
+  ,m.purchase_price
   ,s.logcost
   ,s.shipping_fee
   ,s.ship_cost
