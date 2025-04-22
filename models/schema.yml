@@ -5,7 +5,7 @@ sources:
   database: tribal-contact-455408-c3
   schema: raw_data
   tables:
-  - name: stock
+  - name: sales
     identifier: raw_gz_sales
     
   - name: product
