@@ -1,230 +1,282 @@
 version: 2
 
 sources:
-- name: raw
-  database: tribal-contact-455408-c3
-  schema: raw_data
-  tables:
-  - name: sales
-    identifier: raw_gz_sales
-    description: Raw data from sales of Greenweez
-    freshness:
-      warn_after:
-        count: 90
-        period: day
-    loaded_at_field: date_date
-    tests:
-      - unique:
-          column_name: "CONCAT(orders_id || '-' || pdt_id)"
-    columns:
-      - name: date_date
-        description: Displays the date a product was sold in DATE format
-      - name: orders_id
-        description: Displays the order_id for each purchase
-      - name: products_id
-        description: Displays the products_id for each purchase
-      - name: revenue
-        description: Revenue generated from each individual order
-      - name: quantity
-        description: How many orders were made in one transaction
-      
-  - name: product
-    identifier: raw_gz_product
-    description: Raw data from products purchases in Greenweez
-    columns:
-      - name: products_id
-        description: Displays the product_id of the product sold
+  - name: raw
+    database: tribal-contact-455408-c3
+    schema: raw_data
+    tables:
+      - name: sales
+        identifier: raw_gz_sales
+        description: Raw data from sales of Greenweez
+        freshness:
+          warn_after:
+            count: 90
+            period: day
+        loaded_at_field: date_date
         tests:
-          - unique
-          - not_null
-      - name: purchase_price
-        description: Price each individual product was purchased for.
-  - name: ship
-    identifier: raw_gz_ship
-    description: Raw data from shipping information in Greeenweez
-    columns:
-      - name: orders_id
-        description: Displays the order_id relating to relevant shipping information
-        tests:
-          - unique
-          - not_null
-      - name: shipping_fee
-        description: Displays the shipping fee that occured for that order
-      - name: logcost
-        description: Displays the log cost that occured for that order
-      - name: ship_cost
-        description: Displays the shipping cost that occured for that order
-  - name: adwords
-    identifier: raw_gz_adwords
-    description: Raw data taken from adwords campaigns and costs incured
-    columns:
-      - name: date_date
-        description: Date of data input
-      - name: paid_source
-        description: Data on specified paid source
-      - name: campaign_key
-        description: Data on specific campaign key for each input
-      - name: camPGN_name
-        description: Data on specific campaign name for each input
-      - name: ads_cost
-        description: Data on how much the specific advert cost to run
-      - name: impression
-        description: Data on how many impressions the specific advert incurred
-      - name: click
-        description: Data on how many clicks the specific advert incurred
-  - name: bing
-    identifier: raw_gz_bing
-    description: Raw data taken from bing campaigns and costs incured
-    columns:
-      - name: date_date
-        description: Date of data input
-      - name: paid_source
-        description: Data on specified paid source
-      - name: campaign_key
-        description: Data on specific campaign key for each input
-      - name: camPGN_name
-        description: Data on specific campaign name for each input
-      - name: ads_cost
-        description: Data on how much the specific advert cost to run
-      - name: impression
-        description: Data on how many impressions the specific advert incurred
-      - name: click
-        description: Data on how many clicks the specific advert incurred
-  - name: criteo
-    identifier: raw_gz_criteo
-    description: Raw data taken from criteo campaigns and costs incured
-    columns:
-      - name: date_date
-        description: Date of data input
-      - name: paid_source
-        description: Data on specified paid source
-      - name: campaign_key
-        description: Data on specific campaign key for each input
-      - name: camPGN_name
-        description: Data on specific campaign name for each input
-      - name: ads_cost
-        description: Data on how much the specific advert cost to run
-      - name: impression
-        description: Data on how many impressions the specific advert incurred
-      - name: click
-        description: Data on how many clicks the specific advert incurred
-  - name: facebook
-    identifier: raw_gz_facebook
-    description:  Raw data taken from facebook campaigns and costs incured
-    columns:
-      - name: date_date
-        description: Date of data input
-      - name: paid_source
-        description: Data on specified paid source
-      - name: campaign_key
-        description: Data on specific campaign key for each input
-      - name: camPGN_name
-        description: Data on specific campaign name for each input
-      - name: ads_cost
-        description: Data on how much the specific advert cost to run
-      - name: impression
-        description: Data on how many impressions the specific advert incurred
-      - name: click
-        description: Data on how many clicks the specific advert incurred
+          - unique:
+              column_name: "CONCAT(orders_id || '-' || pdt_id)"
+        columns:
+          - name: date_date
+            description: Displays the date a product was sold in DATE format
+          - name: orders_id
+            description: Displays the order_id for each purchase
+          - name: products_id
+            description: Displays the products_id for each purchase
+          - name: revenue
+            description: Revenue generated from each individual order
+          - name: quantity
+            description: How many orders were made in one transaction
+
+      - name: product
+        identifier: raw_gz_product
+        description: Raw data from products purchases in Greenweez
+        columns:
+          - name: products_id
+            description: Displays the product_id of the product sold
+            tests:
+              - unique
+              - not_null
+          - name: purchase_price
+            description: Price each individual product was purchased for.
+      - name: ship
+        identifier: raw_gz_ship
+        description: Raw data from shipping information in Greeenweez
+        columns:
+          - name: orders_id
+            description: Displays the order_id relating to relevant shipping information
+            tests:
+              - unique
+              - not_null
+          - name: shipping_fee
+            description: Displays the shipping fee that occured for that order
+          - name: logcost
+            description: Displays the log cost that occured for that order
+          - name: ship_cost
+            description: Displays the shipping cost that occured for that order
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: Raw data taken from adwords campaigns and costs incured
+        columns:
+          - name: date_date
+            description: Date of data input
+          - name: paid_source
+            description: Data on specified paid source
+          - name: campaign_key
+            description: Data on specific campaign key for each input
+          - name: camPGN_name
+            description: Data on specific campaign name for each input
+          - name: ads_cost
+            description: Data on how much the specific advert cost to run
+          - name: impression
+            description: Data on how many impressions the specific advert incurred
+          - name: click
+            description: Data on how many clicks the specific advert incurred
+      - name: bing
+        identifier: raw_gz_bing
+        description: Raw data taken from bing campaigns and costs incured
+        columns:
+          - name: date_date
+            description: Date of data input
+          - name: paid_source
+            description: Data on specified paid source
+          - name: campaign_key
+            description: Data on specific campaign key for each input
+          - name: camPGN_name
+            description: Data on specific campaign name for each input
+          - name: ads_cost
+            description: Data on how much the specific advert cost to run
+          - name: impression
+            description: Data on how many impressions the specific advert incurred
+          - name: click
+            description: Data on how many clicks the specific advert incurred
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: Raw data taken from criteo campaigns and costs incured
+        columns:
+          - name: date_date
+            description: Date of data input
+          - name: paid_source
+            description: Data on specified paid source
+          - name: campaign_key
+            description: Data on specific campaign key for each input
+          - name: camPGN_name
+            description: Data on specific campaign name for each input
+          - name: ads_cost
+            description: Data on how much the specific advert cost to run
+          - name: impression
+            description: Data on how many impressions the specific advert incurred
+          - name: click
+            description: Data on how many clicks the specific advert incurred
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: Raw data taken from facebook campaigns and costs incured
+        columns:
+          - name: date_date
+            description: Date of data input
+          - name: paid_source
+            description: Data on specified paid source
+          - name: campaign_key
+            description: Data on specific campaign key for each input
+          - name: camPGN_name
+            description: Data on specific campaign name for each input
+          - name: ads_cost
+            description: Data on how much the specific advert cost to run
+          - name: impression
+            description: Data on how many impressions the specific advert incurred
+          - name: click
+            description: Data on how many clicks the specific advert incurred
 
 models:
-   - name: int_orders_margin
-     description: margin calculation per order
-     columns:
-       - name: orders_id
-         description: primary key
-         tests:
-           - unique
-           - not_null
-       - name: margin
-         description: margin = revenue - purchase_cost
-         tests:
-           - not_null
-       - name: Purchase_cost
-         description: purchase_cost = quantity * purchase_price
-         tests:
-           - not_null
-       - name: date_date
-         description: date of the order
-         tests:
-           - not_null
-       - name: revenue
-         description: sum of revenue per order
-         tests:
-           - not_null
-       - name: quantity
-         description: sum of quantity per order
-         tests:
-           - not_null
+  - name: int_orders_margin
+    description: margin calculation per order
+    columns:
+      - name: orders_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+      - name: margin
+        description: margin = revenue - purchase_cost
+        tests:
+          - not_null
+      - name: Purchase_cost
+        description: purchase_cost = quantity * purchase_price
+        tests:
+          - not_null
+      - name: date_date
+        description: date of the order
+        tests:
+          - not_null
+      - name: revenue
+        description: sum of revenue per order
+        tests:
+          - not_null
+      - name: quantity
+        description: sum of quantity per order
+        tests:
+          - not_null
 
-   - name: int_sales_margin
-     description: margin calculation per order line / product sales
-     columns:
-       - name: orders_id
-         description: orders key
-         tests:
-           - not_null
-       - name: products_id
-         description: products key
-         tests:
-           - not_null
-       - name: margin
-         description: margin = revenue - purchase_cost
-         tests:
-           - not_null
-       - name: Purchase_cost
-         description: purchase_cost = quantity * purchase_price
-         tests:
-           - not_null
-       - name: date_date
-         description: date of the order
-         tests:
-           - not_null
-       - name: revenue
-         description: sum of revenue per order
-         tests:
-           - not_null
-       - name: quantity
-         description: sum of quantity per order
-         tests:
-           - not_null
-     tests:
-       - unique:
-           column_name: "(orders_id || '-' || products_id)"
+  - name: int_sales_margin
+    description: margin calculation per order line / product sales
+    columns:
+      - name: orders_id
+        description: orders key
+        tests:
+          - not_null
+      - name: products_id
+        description: products key
+        tests:
+          - not_null
+      - name: margin
+        description: margin = revenue - purchase_cost
+        tests:
+          - not_null
+      - name: Purchase_cost
+        description: purchase_cost = quantity * purchase_price
+        tests:
+          - not_null
+      - name: date_date
+        description: date of the order
+        tests:
+          - not_null
+      - name: revenue
+        description: sum of revenue per order
+        tests:
+          - not_null
+      - name: quantity
+        description: sum of quantity per order
+        tests:
+          - not_null
+    tests:
+      - unique:
+          column_name: "(orders_id || '-' || products_id)"
 
-   - name: int_orders_operational
-     description: operational margin calculation per order
-     columns:
-       - name: orders_id
-         description: primary key
-         tests:
-           - unique
-           - not_null
-       - name: date_date
-         description: date of the order
-         tests:
-           - not_null
-       - name: operational_margin
-         description: operational_margin = margin + shipping_fee - logcost - ship_cost
-       - name: quantity
-         description: sum of quantity per order
-         tests:
-           - not_null
-       - name: revenue
-         description: sum of revenue per order
-         tests:
-           - not_null
-       - name: purchase_cost
-         description: purchase_cost = quantity * purchase_price
-         tests:
-           - not_null
-       - name: margin
-         description: margin = revenue - purchase_cost
-         tests:
-           - not_null
-       - name: shipping_fee
-         description: the price the customer pays for shipping
-       - name: logcost
-         description: the cost of preparing the parcel in the distribution centre/warehouse
-       - name: ship_cost
-         description: shipping cost paid by Greenweez to the carrier/logistics provider
+  - name: int_orders_operational
+    description: operational margin calculation per order
+    columns:
+      - name: orders_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+      - name: date_date
+        description: date of the order
+        tests:
+          - not_null
+      - name: operational_margin
+        description: operational_margin = margin + shipping_fee - logcost - ship_cost
+      - name: quantity
+        description: sum of quantity per order
+        tests:
+          - not_null
+      - name: revenue
+        description: sum of revenue per order
+        tests:
+          - not_null
+      - name: purchase_cost
+        description: purchase_cost = quantity * purchase_price
+        tests:
+          - not_null
+      - name: margin
+        description: margin = revenue - purchase_cost
+        tests:
+          - not_null
+      - name: shipping_fee
+        description: the price the customer pays for shipping
+      - name: logcost
+        description: the cost of preparing the parcel in the distribution centre/warehouse
+      - name: ship_cost
+        description: shipping cost paid by Greenweez to the carrier/logistics provider
+
+  - name: int_campaigns
+    description: Combination of all four ad campaign datasets
+    columns:
+      - name: date_date
+        description: Date of data input
+        tests:
+          - not_null
+      - name: paid_source
+        description: Data on specified paid source
+        tests:
+          - not_null
+      - name: campaign_key
+        description: Data on specific campaign key for each input
+        tests:
+          - not_null
+      - name: camPGN_name
+        description: Data on specific campaign name for each input
+        tests:
+          - not_null
+      - name: ads_cost
+        description: Data on how much the specific advert cost to run
+        tests:
+          - not_null
+      - name: impression
+        description: Data on how many impressions the specific advert incurred
+        tests:
+          - not_null
+      - name: click
+        description: Data on how many clicks the specific advert incurred
+        tests:
+          - not_null
+
+  - name: int_campaigns_day
+    description: Summarized data grouped by day showing total cost, impressions and clicks
+    columns:
+      - name: date_date
+        description: Single day data entries
+        tests:
+          - not_null
+      - name: ads_cost
+        description: Ads cost for that specific day
+        tests:
+          - not_null
+      - name: ads_impression
+        description: Ads impressions for that specific day
+        tests:
+          - not_null
+      - name: ads_clicks
+        description: Ads clicks for that specific day
+        tests:
+          - not_null
