@@ -54,7 +54,78 @@ sources:
         description: Displays the log cost that occured for that order
       - name: ship_cost
         description: Displays the shipping cost that occured for that order
-
+  - name: adwords
+    identifier: raw_gz_adwords
+    description: Raw data taken from adwords campaigns and costs incured
+    columns:
+      - name: date_date
+        description: Date of data input
+      - name: paid_source
+        description: Data on specified paid source
+      - name: campaign_key
+        description: Data on specific campaign key for each input
+      - name: camPGN_name
+        description: Data on specific campaign name for each input
+      - name: ads_cost
+        description: Data on how much the specific advert cost to run
+      - name: impression
+        description: Data on how many impressions the specific advert incurred
+      - name: click
+        description: Data on how many clicks the specific advert incurred
+  - name: bing
+    identifier: raw_gz_bing
+    description: Raw data taken from bing campaigns and costs incured
+    columns:
+      - name: date_date
+        description: Date of data input
+      - name: paid_source
+        description: Data on specified paid source
+      - name: campaign_key
+        description: Data on specific campaign key for each input
+      - name: camPGN_name
+        description: Data on specific campaign name for each input
+      - name: ads_cost
+        description: Data on how much the specific advert cost to run
+      - name: impression
+        description: Data on how many impressions the specific advert incurred
+      - name: click
+        description: Data on how many clicks the specific advert incurred
+  - name: criteo
+    identifier: raw_gz_criteo
+    description: Raw data taken from criteo campaigns and costs incured
+    columns:
+      - name: date_date
+        description: Date of data input
+      - name: paid_source
+        description: Data on specified paid source
+      - name: campaign_key
+        description: Data on specific campaign key for each input
+      - name: camPGN_name
+        description: Data on specific campaign name for each input
+      - name: ads_cost
+        description: Data on how much the specific advert cost to run
+      - name: impression
+        description: Data on how many impressions the specific advert incurred
+      - name: click
+        description: Data on how many clicks the specific advert incurred
+  - name: facebook
+    identifier: raw_gz_facebook
+    description:  Raw data taken from facebook campaigns and costs incured
+    columns:
+      - name: date_date
+        description: Date of data input
+      - name: paid_source
+        description: Data on specified paid source
+      - name: campaign_key
+        description: Data on specific campaign key for each input
+      - name: camPGN_name
+        description: Data on specific campaign name for each input
+      - name: ads_cost
+        description: Data on how much the specific advert cost to run
+      - name: impression
+        description: Data on how many impressions the specific advert incurred
+      - name: click
+        description: Data on how many clicks the specific advert incurred
 
 models:
    - name: int_orders_margin
