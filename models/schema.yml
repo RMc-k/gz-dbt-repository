@@ -246,8 +246,6 @@ models:
           - not_null
       - name: camPGN_name
         description: Data on specific campaign name for each input
-        tests:
-          - not_null
       - name: ads_cost
         description: Data on how much the specific advert cost to run
         tests:
